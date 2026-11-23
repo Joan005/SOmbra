@@ -175,6 +175,7 @@ SOmbra/
 ## 8. Pendiente
 
 - [ ] **Probar `install.sh` en una VM limpia** (de momento solo se ha probado con `--dry-run`)
+- [ ] **Icono de SOmbra en el instalador**: sustituir el dibujo en letras de la portada (`art_planeador_l` en `ui.sh`, heredado de PikSOn) por un icono propio de SOmbra, con el degradado violeta-cian
 - [ ] Panel del **objetivo**: notas rápidas por máquina y puertos abiertos leídos del último `nmap`
 - [ ] **Lanzador de herramientas** por categorías
 - [ ] Chip de **modo monitor** del Wi-Fi (interfaz y canal)
