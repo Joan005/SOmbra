@@ -1,0 +1,41 @@
+# Prompt de SOmbra: VPN y objetivo siempre a la vista
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[┌─](#2a3350)${custom.vpn}${custom.target}$directory$git_branch$python$cmd_duration
+[└─](#2a3350)$character"""
+add_newline = true
+
+[custom.vpn]
+command = "ip -4 -o addr show | awk '$2 ~ /^(tun|wg|ppp)/ { split($4, a, \"/\"); print a[1]; exit }'"
+when = "ip -4 -o addr show | grep -qE ' (tun|wg|ppp)'"
+shell = ["sh"]
+format = "[\\[](#2a3350)[ $output](bold #39ff9f)[\\]](#2a3350)"
+
+[custom.target]
+command = "cat ~/.local/share/sombra/target"
+when = "test -s ~/.local/share/sombra/target"
+shell = ["sh"]
+format = "[\\[](#2a3350)[ $output](bold #ff2e4d)[\\]](#2a3350)"
+
+[directory]
+style = "bold #c04cfd"
+format = "[\\[](#2a3350)[$path]($style)[$read_only]($read_only_style)[\\]](#2a3350)"
+truncation_length = 3
+
+[git_branch]
+format = "[\\[](#2a3350)[$symbol$branch](#00e5ff)[\\]](#2a3350)"
+symbol = " "
+
+[python]
+format = "[\\[](#2a3350)[${symbol}${virtualenv}](#ffcc66)[\\]](#2a3350)"
+detect_extensions = []
+detect_files = []
+
+[cmd_duration]
+min_time = 3000
+format = "[ $duration](#7d8aa6)"
+
+[character]
+success_symbol = "[❯](bold #00e5ff)"
+error_symbol = "[❯](bold #ff2e4d)"

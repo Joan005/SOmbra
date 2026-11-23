@@ -1,0 +1,4 @@
+# Datos propios de cada equipo: no se suben
+.config/hypr/monitors.lua
+*.bak*
+*.log
